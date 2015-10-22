@@ -1,15 +1,15 @@
-#!/usr/bin/python
-
+#!/bin/bash
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-python "$DIR/client.py"
-python "$DIR/server.py"
+ghc "$DIR/Client.hs"
+ghc "$DIR/Server.hs"
 rm -rf "$DIR/bin"
 mkdir -p "$DIR/bin"
-if [ -f "$DIR/client" ]
+if [ -f "$DIR/Client" ]
 then
-    mv "$DIR/client" "$DIR/bin"
+    mv "$DIR/Client" "$DIR/bin"
 fi
-if [ -f "$DIR/server" ]
+if [ -f "$DIR/Server" ]
 then
-    mv "$DIR/server" "$DIR/bin"
+    mv "$DIR/Server" "$DIR/bin"
 fi
+find "$DIR" -name "*.o" -o -name "*.hi" | xargs -I{} rm {}
