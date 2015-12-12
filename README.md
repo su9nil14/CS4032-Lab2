@@ -18,5 +18,5 @@ Implementation of a centralised chat server, building on your TCP multithreaded 
 
 How to...
 
-1- on cmd run cabal run 'port' to start the server.
+1- on cmd run cabal run [portnumber] to start the server.
 
