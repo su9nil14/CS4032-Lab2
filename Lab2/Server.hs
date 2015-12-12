@@ -26,12 +26,12 @@ checkSemaphore :: Semaphore -> IO Bool
 checkSemaphore (Semaphore m) =
     modifyMVar m $ \i ->
         if i == 0 then return (i, False)
-        else let !z = i-1 in return (z, True)
+        else let z = i-1 in return (z, True)
 
 signalSemaphore :: Semaphore -> IO ()
 signalSemaphore (Semaphore m) =
     modifyMVar m $ \i ->
-        let !z = i+1 in return (z, ())
+        let z = i+1 in return (z, ())
 
 -- Server
 
