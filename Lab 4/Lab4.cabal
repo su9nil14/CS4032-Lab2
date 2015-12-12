@@ -1,0 +1,26 @@
+
+
+name:                Lab4
+version:             0.1.0.0
+license:             MIT
+license-file:        LICENSE
+author:              None
+maintainer:         
+category:            Network
+build-type:          Simple
+cabal-version:       >=1.10
+
+executable Lab4
+  main-is:             Main.hs
+  ghc-options:         -Wall
+  build-depends:       base >=4.5 && <=4.9,
+                       containers,
+                       hashable,
+                       lens,
+                       mtl,
+                       network,
+                       random,
+                       split,
+                       transformers
+  hs-source-dirs:      code
+  default-language:    Haskell2010
