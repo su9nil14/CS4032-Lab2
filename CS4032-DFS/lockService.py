@@ -7,7 +7,7 @@ Port = 8883
 
 LOCK_TIMEOUT = 30
 
-LOCK_MAPPINGS = {}
+LOCK_MAPPINGS = {}  #array that holds all the mapping of each locks --i.e which lock assigned to which client etc
 
 def lockExists(filename):
     return filename in LOCK_MAPPINGS
