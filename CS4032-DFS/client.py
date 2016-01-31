@@ -59,9 +59,9 @@ class Client():
     def read(self, filename):
         fileServerInfo = json.loads(self.open(filename))
 
-        # if file exists, checked with directory server
+        # check if file exists by checking with the directory server
         if fileServerInfo['isFile']:
-            # if file is in cache and its timestamp is at least as new as the last write to the file
+            # check if file is in cache and its timestamp with the last write to the file--is it new or the same?
             if (filename in self.cache) and (self.cache[filename]['timestamp'] >= fileServerInfo['timestamp']):
                 cacheFileInfo = self.cache[filename]
                 print "Read '" + filename + "' from cache!"
@@ -84,9 +84,10 @@ class Client():
         else:
         	return filename + " does not exist!"
 
-    # 1. check master server for location on data nodes
-    # 2. check if file is locked (whether by someone else or this client)
-    # 3. if not locked, write file, otherwise only write if current client owns lock (tbi)
+    # flow of the program----
+    # 1. check the master server for location on data nodes
+    # 2. check whether  file is locked by someone else or the current  client
+    # 3. if not locked then write the file, else only write if current client owns the lock
     def write(self, filename, data):
         lockcheck = json.loads(client.checkLock(filename))
 
@@ -121,7 +122,7 @@ class Client():
         return response
 
 
-# simple test for the client library
+# client test
 if __name__ == '__main__':
     client = Client(Main_Host, Main_Port,Locking_Host, Locking_Port)
 
