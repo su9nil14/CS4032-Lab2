@@ -7,7 +7,7 @@ HOST = "localhost"#"192.168.0.1"
 PORT = 8080
 
 FILE_SERVERS = {}
-FILE_MAPPINGS = {}
+FILE_MAPPINGS = {} #holds all details for files - id,address,port and timestamps
 
 def fileExists(filename):
     return filename in FILE_MAPPINGS
@@ -67,7 +67,7 @@ class ThreadedHandler(SocketServer.BaseRequestHandler):
             })
         elif requestType == "read":
             if fileExists(msg['filename']):
-                fs = getFileMapping('filename') #############################
+                fs = getFileMapping('filename')
                 response = json.dumps({
                     "response": "read-exists",
                     "filename": msg['filename'],
@@ -113,8 +113,8 @@ class ThreadedHandler(SocketServer.BaseRequestHandler):
                 })
         elif requestType == "dfsjoin":
             nodeID = msg['uuid']
-            # if evals to True the file server is new and a uuid will be generated
-            # if evals to False the file server exists and already has a uuid
+            # if evaluates to True-- the file server is new and a uuid will be generated
+            # if evaluates to False-- the file server exists and already has a uuid
             if(nodeID == ""):
                 nodeID = str(uuid.uuid4())
 
