@@ -6,13 +6,13 @@ import os
 
 NODEID = ""
 HOST = "localhost"#"192.168.0.1"
-PORT = 0 # let OS assign free port
+PORT = 0 # automatically assigned
 
 MASTER_ADDRESS = "localhost"#"127.0.0.1"
 MASTER_PORT = 8080
 
 CURRENT_DIRECTORY = os.getcwd()
-BUCKET_NAME = "drive"
+BUCKET_NAME = "drive"              #directory to store files
 BUCKET_PATH = os.path.join(CURRENT_DIRECTORY, BUCKET_NAME)
 
 def dfsOpen(filename):
